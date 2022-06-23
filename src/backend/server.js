@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const config = require('dotenv').config();
 
 const TestModel = require('./models/Test.model.js');
-const ReviewsRouter = require('./routes/reviews');
+const LocationsRouter = require('./routes/locations');
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors());
@@ -20,23 +20,8 @@ app.get('/', (req, res) => {
     res.send("Works");
 });
 
-app.use('/reviews', ReviewsRouter);
+app.use('/api/locations', LocationsRouter);
 
-app.post('/test', (req, res) => {
-    
-    const body = req.body;
-
-    TestModel.create({
-        name: body.name,
-        age: body.age,
-        favoriteFood: body.favoriteFood
-    }).then( (response) => {
-        res.send("Successfully uploaded to DB");
-    }).catch( (err) => {
-        console.log(err);
-    }); 
-    
-});
 
 app.listen(port, () => {
     console.log("Listening on port " + port);
