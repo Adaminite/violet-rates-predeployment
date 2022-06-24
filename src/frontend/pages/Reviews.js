@@ -1,6 +1,8 @@
 import React from 'react';
 const axios = require('axios');
 
+import AddLocation from "../components/AddLocation.js";
+
 class Reviews extends React.Component{
     constructor(props){
         super(props);
@@ -12,8 +14,8 @@ class Reviews extends React.Component{
 
     render(){
         return(
-            <div> Hello </div>
-        )
+            <AddLocation/>
+        );
     }
 }
 
