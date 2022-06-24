@@ -32,7 +32,7 @@ class Navbar extends React.Component{
                 <ul style = {{margin: 0, padding: 0}} className ="left-items" >
                     <Link style={linkInlineStyle} to = "/"> Home </Link>
                     <Link style={linkInlineStyle} to = "/about"> About </Link>
-                    <Link style={linkInlineStyle} to = "/search"> Search </Link>
+                    <Link style={linkInlineStyle} to = "/reviews"> Reviews </Link>
                 </ul>
                 {rightPart}
             </nav>
