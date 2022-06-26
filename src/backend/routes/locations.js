@@ -16,10 +16,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
+    console.log(req);
     let locations;
     Locations.exists({
-        name: req.name.toLowerCase(),
-        address: req.address.toLowerCase()
+        name: req.body.name,
+        address: req.body.address
     }, (error, data) => {
         if(error){
             console.log("Error: Unable to add location");
@@ -29,8 +30,8 @@ router.post('/add', (req, res) => {
         }
         else{
             Locations.create({
-                name: req.name.toLowerCase(),
-                address: req.address.toLowerCase()
+                name: req.body.name,
+                address: req.body.address
             }, (error, data) => {
                 if(error){
                     res.send(error);
