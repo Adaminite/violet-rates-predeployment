@@ -18,8 +18,8 @@ class SignUp extends React.Component{
      handleSubmit(event){
         event.preventDefault();
         const data = event.target.elements;
-        const email = data[0].value;
-        const username = data[1].value;
+        const email = data[0].value.toLowerCase();
+        const username = data[1].value.toLowerCase();
         const password = data[2].value;
 
         
@@ -40,7 +40,6 @@ class SignUp extends React.Component{
                 console.log(response);
                 alert(response.data);
             }
-            
         }).catch( (error) => {
             console.log(error);
             alert("Unable to register at this time. Please try again later");

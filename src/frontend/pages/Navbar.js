@@ -13,7 +13,7 @@ class Navbar extends React.Component{
         if(this.props.isSignedIn){
             rightPart = <ul style = {{margin: 0, padding: 0, listStyleType: 'none'}} className = "right-items">
                             <li style={linkInlineStyle}> Hello, {this.props.currentUser}!</li>
-                            <Link style={linkInlineStyle} to = "/"> Log Out </Link>
+                            <Link onClick = {this.props.handleLogOut} style={linkInlineStyle} to = "/"> Log Out </Link>
                         </ul>
         }
         else{
