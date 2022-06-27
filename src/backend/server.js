@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('dotenv').config();
-
-const TestModel = require('./models/Test.model.js');
 const LocationsRouter = require('./routes/locations');
+const UsersRouter = require('./routes/users');
+
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors());
@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/locations', LocationsRouter);
+app.use('/api/users', UsersRouter);
 
 
 app.listen(port, () => {

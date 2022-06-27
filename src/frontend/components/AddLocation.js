@@ -76,7 +76,7 @@ class AddLocation extends React.Component{
                             <input className="form-control" name = "name" type = "text" placeholder="28742" required/>
                         </div>
 
-                        <div id ="submit-btn-ctnr" className = "form-group">
+                        <div className = "form-group submit-btn-ctnr">
                             <input style={{backgroundColor: "#6f5499"}} class = "btn btn-primary" type = "submit" value = "Add Location"/> 
                         </div>
                     </div>

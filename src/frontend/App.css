@@ -40,9 +40,19 @@ body{
     align-items: center;
 }
 
-#submit-btn-ctnr{
+.submit-btn-ctnr{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+}
+
+#sign-up-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sign-up-form{
+    width: 300px;
 }

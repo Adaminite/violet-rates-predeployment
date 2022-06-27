@@ -5,19 +5,14 @@ class Navbar extends React.Component{
 
     constructor(props){
         super(props);
-
-        this.state = {
-            isSignedIn: false,
-            currentUser: "Omar"
-        };
     }
 
     render(){
         const linkInlineStyle = {textDecoration: 'none', color: 'inherit'};
         let rightPart;
-        if(this.state.isSignedIn){
+        if(this.props.isSignedIn){
             rightPart = <ul style = {{margin: 0, padding: 0, listStyleType: 'none'}} className = "right-items">
-                            <li style={linkInlineStyle}> Hello, {this.state.currentUser}!</li>
+                            <li style={linkInlineStyle}> Hello, {this.props.currentUser}!</li>
                             <Link style={linkInlineStyle} to = "/"> Log Out </Link>
                         </ul>
         }
