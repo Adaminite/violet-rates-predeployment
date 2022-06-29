@@ -20,6 +20,12 @@ class App extends React.Component{
             locations: []
         }
 
+        this.handleSignIn = this.handleSignIn.bind(this);
+        this.handleLogOut = this.handleLogOut.bind(this);
+        this.handleAddLocation = this.handleAddLocation.bind(this);
+    }
+
+    componentDidMount(){
         axios.get("http://localhost:5000/api/locations").then( (response) => {
 
             let locations = response.data.map( (value) => {
@@ -37,10 +43,6 @@ class App extends React.Component{
             }).catch( (error) => {
                 console.log(error);
             });
-
-        this.handleSignIn = this.handleSignIn.bind(this);
-        this.handleLogOut = this.handleLogOut.bind(this);
-        this.handleAddLocation = this.handleAddLocation.bind(this);
     }
 
     handleAddLocation(newLocation){
@@ -72,7 +74,7 @@ class App extends React.Component{
                     <Routes>
                         <Route exact path = "/" element={<Home/>}/>
                         <Route exact path = "/reviews" element = {<Reviews locations = {this.state.locations} handleAddLocation = {this.handleAddLocation}/>}/>
-                        <Route exact path = "/reviews/:id" element ={<Reviews/>}/>
+                        <Route exact path = "/reviews/:id" element={<Location locations = {this.state.locations}/>} />
                         <Route path = "/signup" element = {<SignUp handleSignIn = {this.handleSignIn}/>}/>
                         <Route path = "/login" element = {<LogIn handleSignIn = {this.handleSignIn}/>}/>
                     </Routes>
