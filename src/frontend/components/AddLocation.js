@@ -32,7 +32,9 @@ class AddLocation extends React.Component{
             console.log(response);
             this.props.handleSubmit({
                 name: name.toLowerCase(),
-                address: (address + "\n" + location).toLowerCase()
+                address: (address + "\n" + location).toLowerCase(),
+                reviews: [], 
+                id: (response.data).toString()
             })
         }).catch( (error) => {
             console.log(error);
@@ -42,7 +44,7 @@ class AddLocation extends React.Component{
     render(){
         return(
         <div>
-            <h1 style={{textAlign:"center", marginTop: "10px"}} class = "h1"> Add A Location </h1>
+            <h1 style={{textAlign:"center", marginTop: "10px"}} className = "h1"> Add A Location </h1>
             <div id = "add-form-ctnr">    
                 <form id = "add-form"  onSubmit={this.handleSubmit}>
                     <div className ="form-group">
@@ -77,7 +79,7 @@ class AddLocation extends React.Component{
                         </div>
 
                         <div className = "form-group submit-btn-ctnr">
-                            <input style={{backgroundColor: "#6f5499"}} class = "btn btn-primary" type = "submit" value = "Add Location"/> 
+                            <input style={{backgroundColor: "#6f5499"}} className = "btn btn-primary" type = "submit" value = "Add Location"/> 
                         </div>
                     </div>
                 </form>

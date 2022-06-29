@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Reviews from "./pages/Reviews";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
+import Location from "./pages/Location";
 
 const axios = require("axios");
 
@@ -15,11 +16,37 @@ class App extends React.Component{
 
         this.state = {
             isSignedIn: false,
-            username: ""
+            username: "",
+            locations: []
         }
+
+        axios.get("http://localhost:5000/api/locations").then( (response) => {
+
+            let locations = response.data.map( (value) => {
+                return {
+                    address: value.address,
+                    name: value.name,
+                    id: (value._id).toString(),
+                    reviews: value.reviews
+                };
+            });
+
+            this.setState({
+                locations: locations
+            });
+            }).catch( (error) => {
+                console.log(error);
+            });
 
         this.handleSignIn = this.handleSignIn.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
+        this.handleAddLocation = this.handleAddLocation.bind(this);
+    }
+
+    handleAddLocation(newLocation){
+        this.setState({
+            locations: this.state.locations.concat(newLocation)
+        });
     }
 
     handleSignIn(username){
@@ -44,7 +71,8 @@ class App extends React.Component{
                     <Navbar handleLogOut={this.handleLogOut} isSignedIn = {this.state.isSignedIn} currentUser = {this.state.username}/>
                     <Routes>
                         <Route exact path = "/" element={<Home/>}/>
-                        <Route exact path = "/reviews" element = {<Reviews/>}/>
+                        <Route exact path = "/reviews" element = {<Reviews locations = {this.state.locations} handleAddLocation = {this.handleAddLocation}/>}/>
+                        <Route exact path = "/reviews/:id" element ={<Reviews/>}/>
                         <Route path = "/signup" element = {<SignUp handleSignIn = {this.handleSignIn}/>}/>
                         <Route path = "/login" element = {<LogIn handleSignIn = {this.handleSignIn}/>}/>
                     </Routes>

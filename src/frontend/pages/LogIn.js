@@ -60,7 +60,7 @@ class LogIn extends React.Component{
                         </div>
 
                         <div className = "form-group submit-btn-ctnr">
-                            <input style={{backgroundColor: "#6f5499"}} class = "btn btn-primary" type = "submit" value = "Log In"/> 
+                            <input style={{backgroundColor: "#6f5499"}} className = "btn btn-primary" type = "submit" value = "Log In"/> 
                         </div>
                     </form>
                 </div>

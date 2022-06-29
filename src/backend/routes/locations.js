@@ -37,7 +37,7 @@ router.post('/add', (req, res) => {
                     res.send(error);
                 }
                 else{
-                    res.send("Successfully added");
+                    res.send(data._id);
                 }
             });
         }
