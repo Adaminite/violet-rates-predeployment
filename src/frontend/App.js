@@ -74,7 +74,7 @@ class App extends React.Component{
                     <Routes>
                         <Route exact path = "/" element={<Home/>}/>
                         <Route exact path = "/reviews" element = {<Reviews locations = {this.state.locations} handleAddLocation = {this.handleAddLocation}/>}/>
-                        <Route exact path = "/reviews/:id" element={<Location locations = {this.state.locations}/>} />
+                        <Route path = "/reviews/:id" element={<Location locations = {this.state.locations}/>} />
                         <Route path = "/signup" element = {<SignUp handleSignIn = {this.handleSignIn}/>}/>
                         <Route path = "/login" element = {<LogIn handleSignIn = {this.handleSignIn}/>}/>
                     </Routes>

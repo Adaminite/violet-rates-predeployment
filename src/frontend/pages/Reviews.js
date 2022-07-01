@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 const axios = require('axios');
 
 import AddLocation from "../components/AddLocation.js";
@@ -21,7 +22,7 @@ class Reviews extends React.Component{
                 <ul>
                     {
                         this.props.locations.map( (location) => {
-                            return <li key={location.id}> Name: {location.name} Address: {location.address} Id: {location.id} </li>
+                            return <li key={location.id}> <Link to = {`/reviews/${location.id}`}> Name: {location.name} Address: {location.address} Id: {location.id} </Link> </li>
                         })
                     }
                 </ul>
