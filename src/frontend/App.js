@@ -17,12 +17,14 @@ class App extends React.Component{
         this.state = {
             isSignedIn: false,
             username: "",
+            User: null,
             locations: []
         }
 
         this.handleSignIn = this.handleSignIn.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
         this.handleAddLocation = this.handleAddLocation.bind(this);
+        this.handleAddReview = this.handleAddReview.bind(this);
     }
 
     componentDidMount(){
@@ -51,6 +53,10 @@ class App extends React.Component{
         });
     }
 
+    handleAddReview(text, locationId){
+
+    }
+
     handleSignIn(username){
         this.setState({
             isSignedIn: true,
@@ -74,7 +80,7 @@ class App extends React.Component{
                     <Routes>
                         <Route exact path = "/" element={<Home/>}/>
                         <Route exact path = "/reviews" element = {<Reviews locations = {this.state.locations} handleAddLocation = {this.handleAddLocation}/>}/>
-                        <Route path = "/reviews/:id" element={<Location locations = {this.state.locations}/>} />
+                        <Route path = "/reviews/:id" element={<Location locations = {this.state.locations} isSignedIn = {this.state.isSignedIn} addReview = {this.handleAddReview}/>} />
                         <Route path = "/signup" element = {<SignUp handleSignIn = {this.handleSignIn}/>}/>
                         <Route path = "/login" element = {<LogIn handleSignIn = {this.handleSignIn}/>}/>
                     </Routes>
