@@ -1,47 +1,19 @@
 {
-  "name": "violet-rates",
+  "name": "violet-rates-app",
   "version": "1.0.0",
-  "private": true,
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "keywords": [],
-  "author": "Omar Niazi",
   "license": "MIT",
+  "author": "Omar Niazi",
   "dependencies": {
-    "axios": "^0.27.2",
-    "bootstrap": "^5.1.3",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongodb": "^4.7.0",
-    "mongoose": "^6.4.0",
-    "react": "^18.2.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "mongoose": "^6.4.0"
   },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.2.1",
-    "eslint": "^8.18.0"
+  "scripts": {
+      "start": "node server.js",
+      "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "proxy": "http://localhost:8000"
+  "engines": {
+      "node": "8.9.2"
+  }
 }
