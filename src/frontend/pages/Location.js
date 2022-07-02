@@ -53,7 +53,7 @@ const Location = (props) => {
             <div>
    
                 <div>
-                    Name: {location.name} Address: {location.address} Id: {location.id}
+                    Name: {location.name} Address: {location.address}
                 </div>
 
                 <br/>
@@ -61,7 +61,7 @@ const Location = (props) => {
 
                 <form onSubmit={handleSubmit}>
                     <fieldset>
-                        <legend className="form-label"> Review </legend>
+                        <legend className="form-label"> Add Review </legend>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="rating" id = "option1" value="1"/>
                             <label class="form-check-label" htmlFor="option1">1</label>
@@ -95,6 +95,7 @@ const Location = (props) => {
 
                 </form>
 
+                <h2> Reviews </h2>
                 <ul>
                     {reviews.map( (review) => {
                         return <li> {review.username} 

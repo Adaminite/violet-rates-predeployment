@@ -16,8 +16,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    console.log(req);
-    let locations;
     Locations.exists({
         name: req.body.name,
         address: req.body.address

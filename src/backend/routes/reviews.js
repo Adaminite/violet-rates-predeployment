@@ -34,12 +34,7 @@ router.put('/add', (req, res) => {
                     res.send(error);
                 }
                 else{
-                    console.log(data);
-
                     let reviews = data.reviews;
-
-                    console.log(reviews);
-
                     reviews.unshift(mongoose.Types.ObjectId(reviewId));
                     Locations.updateOne({
                         _id: locationId
@@ -49,8 +44,6 @@ router.put('/add', (req, res) => {
             res.send(data);
         }
     })
-
-    
 });
 
 router.get('/get', (req, res) => {
