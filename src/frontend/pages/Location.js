@@ -41,6 +41,18 @@ const Location = (props) => {
         }, 100); 
     }, []);
     
+    const capitalize = (word) => {
+        
+        let parts = word.split("\n");
+        for(let part in parts){
+            let words = parts[part].split(" ");
+            for(let item in words){
+                words[item] = words[item][0].toUpperCase() + words[item].substring(1);
+            }
+            parts[part] = words.join(" ");
+        }
+        return parts;
+    }
 
     if(location === null){
         return(
@@ -49,10 +61,17 @@ const Location = (props) => {
     }
     else{
         return(
-            <div>
+            <div style = {{padding: "10px" }}>
    
                 <div>
-                    Name: {location.name} Address: {location.address}
+                    <h1>
+                        {capitalize(location.name)}
+                    </h1>
+                    {
+                        capitalize(location.address).map( (part) => {
+                            return <h2> {part} </h2>
+                        })
+                    }
                 </div>
 
                 <br/>
@@ -94,23 +113,34 @@ const Location = (props) => {
 
                 </form>
 
-                <h2> Reviews </h2>
-                <ul>
-                    {reviews.map( (review) => {
-                        return <li> {review.username} 
-                            <br/>
-                            {review.rating}
-                            <br/>
-                            {review.content}
-                            <br/>
-                        </li>
-                    })}
-                </ul>
+                <h2 id ="review-header"> Reviews </h2>
+                <div id = "reviews-wrapper">
+
+                
+                    <div id = "reviews-container" className = "container">
+
+                        <div className="row row-cols-3 align-items-start">
+                                <div className = "col" style = {{flex: "1 0 auto", width: "100px", textAlign: "center"}}> Username </div>  
+                                <div className = "col" style = {{flex: "1 0 auto", width: "100px", textAlign: "center"}}> Rating </div> 
+                                <div className = "col" style = {{flex: "14 1 auto"}}> <p> Review </p> </div>
+                        </div>
+
+                        <hr/>
+
+                        {reviews.map( (review) => {
+                            return  (<div className="row row-cols-3 review-container align-items-start">
+                                <div className = "col" style = {{flex: "1 0 auto", width: "100px", textAlign: "center", alignSelf:"center"}}> {review.username} </div>  
+                                <div className = "col" style = {{flex: "1 0 auto", width: "100px", textAlign: "center",  alignSelf:"center"}}> {review.rating} </div> 
+                                <div className = "col" style = {{flex: "14 1 auto", alignSelf:"center"}}> <p> {review.content} </p> </div>
+                            </div>);
+                        })}
+                    </div>
+                </div>
+
+
             </div>
         )
     }
 }
 
 export default Location;
-
-
