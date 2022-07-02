@@ -130,10 +130,6 @@ class App extends React.Component{
     render(){
         return(
             <div className = "app">
-                <div>
-                    {this.state.username}, {this.state.User}
-                </div>
-
                 <Router>
                     <Navbar handleLogOut={this.handleLogOut} isSignedIn = {this.state.isSignedIn} currentUser = {this.state.username}/>
                     <Routes>
