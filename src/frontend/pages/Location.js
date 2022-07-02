@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Location = (props) => {
     const {id} = useParams();
-
+    const [rerender, setRerender] = useState(false);
     const[location, setLocation] = useState(null);
     const [review, setReview] = useState("");
     const [reviews, setReviews] = useState([]);
@@ -34,10 +34,14 @@ const Location = (props) => {
                     console.log(reviews);
                 }
         });
-
-        console.log(locations);
-
     });
+
+    useEffect( () => {
+        setTimeout( () => {
+            setRerender(!rerender)
+        }, 100); 
+    }, []);
+    
 
     if(location === null){
         return(
@@ -68,7 +72,7 @@ const Location = (props) => {
                         </div>
 
                         <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="2" id = "option3" value="3"/>
+                        <input class="form-check-input" type="radio" name="rating" id = "option3" value="3"/>
                         <label class="form-check-label" htmlFor="option3">3</label>
                         </div>
                         <div class="form-check form-check-inline">
