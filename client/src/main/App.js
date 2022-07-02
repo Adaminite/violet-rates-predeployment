@@ -1,12 +1,12 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Navbar from "../../../src/frontend/pages/Navbar";
-import Home from "../../../src/frontend/pages/Home";
-import Reviews from "../../../src/frontend/pages/Reviews";
-import SignUp from "../../../src/frontend/pages/SignUp";
-import LogIn from "../../../src/frontend/pages/LogIn";
-import Location from "../../../src/frontend/pages/Location";
-import AddLocation from "./components/AddLocation";
+import Navbar from "./pages/Navbar";
+import Home from "./pages/Home";;
+import Reviews from "./pages/Reviews";
+import SignUp from "./pages/SignUp";
+import LogIn from "./pages/LogIn";
+import Location from "./pages/Location";
+import AddLocation from "./pages/AddLocation";
 
 const axios = require("axios");
 
