@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('dotenv').config();
+const path = require("path");
 const LocationsRouter = require('./routes/locations');
 const UsersRouter = require('./routes/users');
 const ReviewsRouter = require('./routes/reviews');
@@ -24,6 +25,12 @@ app.get('/', (req, res) => {
 app.use('/api/locations', LocationsRouter);
 app.use('/api/users', UsersRouter);
 app.use('/api/reviews', ReviewsRouter);
+
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 
 app.listen(port, () => {
