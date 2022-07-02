@@ -1,9 +1,11 @@
 body{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
+/* Navbar */
 .my-navbar{
     display: flex;
     justify-content: space-between; 
@@ -29,6 +31,7 @@ body{
     gap: 16px;
 }
 
+/* Forms for sign up, log in, add location, and add review */
 #add-form{
     max-width: 700px;
     margin: 10px;
@@ -55,4 +58,30 @@ body{
 
 #sign-up-form, #log-in-form{
     width: 300px;
+}
+
+/* For home page */
+
+#home{
+    height: 100vh;
+}
+
+.home-overlay{
+    background: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0,0.3)), url('./images/74101f337a707c0136844998d17a499f.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: white;
+}
+
+.home-title{
+    font-size: calc(40px + 1vw)
+}
+
+.home-caption{
+    font-size: calc(26px + 1vw);
 }

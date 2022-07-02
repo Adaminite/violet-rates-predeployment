@@ -7,28 +7,34 @@ import AddLocation from "../components/AddLocation.js";
 class Reviews extends React.Component{
     constructor(props){
         super(props);
-
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-    handleSubmit(newLocation){
-        this.props.handleAddLocation(newLocation);
-    }
-    
     render(){
         return(
             <div>
-                <ul>
-                    {
-                        this.props.locations.map( (location) => {
-                            return <li key={location.id}> <Link to = {`/reviews/${location.id}`}> Name: {location.name} Address: {location.address} Id: {location.id} </Link> </li>
-                        })
-                    }
-                </ul>
-                <AddLocation handleSubmit = {this.handleSubmit}/>
+
+                <h1 className = "h1" style = {{textAlign: "center", marginTop: "10px", marginBottom: "20px"}}> All Locations </h1>
+                <div>
+                    <div className = "row"> 
+                        {
+                           this.props.locations.map( (location) => {
+                            return (<div className = 'col-sm-3'>
+                                <div className='card'>
+                            <img className="card-img-top" src="https://random.imagecdn.app/1280/720" alt="Card image"/>
+                                    <div className='card-body' >
+                                        <h5 className="card-title"> {location.name} </h5>
+                                        <p className='card-text'> {location.address} </p>
+                                        <Link className="btn btn-primary" style={{backgroundColor: "#6f5499"}} to = {`/reviews/${location.id}`}> See Reviews</Link>
+                                    </div>
+                                </div>
+                            </div>);
+                           })     
+                        }
+
+                    </div>
+                    
+                </div>
             </div>
-            
         );
     }
 }

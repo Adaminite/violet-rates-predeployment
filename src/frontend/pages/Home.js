@@ -7,7 +7,12 @@ class Home extends React.Component{
     
     render(){
         return(
-            <div> Home Page </div>
+            <div id = "home">
+                <div className="home-overlay">
+                    <h1 className='home-title'> Welcome to Violet Rates! </h1>
+                    <p className='home-caption'> A review platform for NYC students by NYC students. </p>
+                </div> 
+            </div>
         );
     }
 }

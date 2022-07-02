@@ -31,7 +31,6 @@ const Location = (props) => {
                 if(item.id === id && location === null){
                     setLocation(item);
                     setReviews(item.reviews);
-                    console.log(reviews);
                 }
         });
     });
@@ -62,27 +61,27 @@ const Location = (props) => {
                 <form onSubmit={handleSubmit}>
                     <fieldset>
                         <legend className="form-label"> Add Review </legend>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating" id = "option1" value="1"/>
-                            <label class="form-check-label" htmlFor="option1">1</label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="radio" name="rating" id = "option1" value="1"/>
+                            <label className="form-check-label" htmlFor="option1">1</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating" id = "option2" value="2"/>
-                            <label class="form-check-label" htmlFor="option2">2</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="rating" id = "option3" value="3"/>
-                        <label class="form-check-label" htmlFor="option3">3</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="rating" id = "option4" value="4"/>
-                        <label class="form-check-label" htmlFor="option4">4</label>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" type="radio" name="rating" id = "option2" value="2"/>
+                            <label className="form-check-label" htmlFor="option2">2</label>
                         </div>
 
-                        <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="rating" id = "option5" value="5"/>
-                        <label class="form-check-label" htmlFor="option5">5</label>
+                        <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="rating" id = "option3" value="3"/>
+                        <label className="form-check-label" htmlFor="option3">3</label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="rating" id = "option4" value="4"/>
+                        <label className="form-check-label" htmlFor="option4">4</label>
+                        </div>
+
+                        <div className ="form-check form-check-inline">
+                        <input className="form-check-input" type="radio" name="rating" id = "option5" value="5"/>
+                        <label className="form-check-label" htmlFor="option5">5</label>
                         </div>
                     </fieldset>
                     <div className = "form-group">

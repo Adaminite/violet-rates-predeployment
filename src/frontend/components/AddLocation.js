@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 const axios = require('axios');
 
 class AddLocation extends React.Component{
@@ -6,6 +7,9 @@ class AddLocation extends React.Component{
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            toReviews: false
+        }
     }
 
     handleSubmit(event){
@@ -29,12 +33,15 @@ class AddLocation extends React.Component{
             name:  name.toLowerCase(),
             address: (address + "\n" + location).toLowerCase()
         }).then( (response) => {
-            console.log(response);
-            this.props.handleSubmit({
+            this.props.handleAddLocation({
                 name: name.toLowerCase(),
                 address: (address + "\n" + location).toLowerCase(),
                 reviews: [], 
                 id: (response.data).toString()
+            })
+
+            this.setState({
+                toReviews: true
             })
         }).catch( (error) => {
             console.log(error);
@@ -42,9 +49,12 @@ class AddLocation extends React.Component{
     }
     
     render(){
+        if(this.state.toReviews){
+            return <Navigate to="/reviews" replace={true}/>
+        }
         return(
         <div>
-            <h1 style={{textAlign:"center", marginTop: "10px"}} className = "h1"> Add A Location </h1>
+            <h1 style={{textAlign:"center", marginTop: "10px"}} className = "h2"> Add A Location </h1>
             <div id = "add-form-ctnr">    
                 <form id = "add-form"  onSubmit={this.handleSubmit}>
                     <div className ="form-group">
@@ -77,11 +87,11 @@ class AddLocation extends React.Component{
                             <label htmlFor = "name"> Zip Code </label>
                             <input className="form-control" name = "name" type = "text" placeholder="28742" required/>
                         </div>
-
-                        <div className = "form-group submit-btn-ctnr">
-                            <input style={{backgroundColor: "#6f5499"}} className = "btn btn-primary" type = "submit" value = "Add Location"/> 
-                        </div>
                     </div>
+                    <div className = "form-group submit-btn-ctnr">
+                        <input style={{backgroundColor: "#6f5499"}} className = "btn btn-primary" type = "submit" value = "Add Location"/> 
+                    </div>
+                    
                 </form>
             </div>
         </div>

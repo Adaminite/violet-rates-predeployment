@@ -28,6 +28,7 @@ class Navbar extends React.Component{
                     <Link style={linkInlineStyle} to = "/"> Home </Link>
                     <Link style={linkInlineStyle} to = "/about"> About </Link>
                     <Link style={linkInlineStyle} to = "/reviews"> Reviews </Link>
+                    <Link style = {linkInlineStyle} to ="/addlocation"> Add Location</Link>
                 </ul>
                 {rightPart}
             </nav>

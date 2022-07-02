@@ -6,6 +6,7 @@ import Reviews from "./pages/Reviews";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Location from "./pages/Location";
+import AddLocation from "./components/AddLocation";
 
 const axios = require("axios");
 
@@ -29,7 +30,6 @@ class App extends React.Component{
 
     componentDidMount(){
         axios.get("http://localhost:5000/api/locations").then( (response) => {
-            console.log(response.data);
             let locations = []
             response.data.map( (value) => {
 
@@ -86,8 +86,6 @@ class App extends React.Component{
             date: Date.now(),
             locationId: locationId
         }).then( (response) => {
-            console.log(response.data);
-
             let newLocations = this.state.locations.map( (location) => {
                 if(location.id === locationId){
                     location.reviews.unshift({
@@ -134,7 +132,8 @@ class App extends React.Component{
                     <Navbar handleLogOut={this.handleLogOut} isSignedIn = {this.state.isSignedIn} currentUser = {this.state.username}/>
                     <Routes>
                         <Route exact path = "/" element={<Home/>}/>
-                        <Route exact path = "/reviews" element = {<Reviews locations = {this.state.locations} handleAddLocation = {this.handleAddLocation}/>}/>
+                        <Route path = "/addlocation" element = {<AddLocation  handleAddLocation = {this.handleAddLocation}/>}/>
+                        <Route exact path = "/reviews" element = {<Reviews locations = {this.state.locations}/>}/>
                         <Route path = "/reviews/:id" element={<Location locations = {this.state.locations} isSignedIn = {this.state.isSignedIn} addReview = {this.handleAddReview}/>} />
                         <Route path = "/signup" element = {<SignUp handleSignIn = {this.handleSignIn}/>}/>
                         <Route path = "/login" element = {<LogIn handleSignIn = {this.handleSignIn}/>}/>
