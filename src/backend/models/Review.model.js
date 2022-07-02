@@ -7,6 +7,14 @@ const reviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true
     },
+    username:{
+        type: String,
+        required: true
+    },
+    location:{
+        type: Schema.Types.ObjectId,
+        required: true
+    },
     rating:{
         type: Number,
         required: true

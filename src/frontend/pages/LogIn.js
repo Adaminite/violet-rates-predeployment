@@ -24,15 +24,15 @@ class LogIn extends React.Component{
         axios.get('http://localhost:5000/api/users/verify', {params: {
             username: username, password: password
         }}).then( (response) => {
-            if(response.data === "Success"){
+            if(typeof response.data === 'string' || response.data instanceof String){
+                alert(response.data);
+            }
+            else{
                 this.setState({
                     toHome: true
                 });
-    
-                this.props.handleSignIn(username);
-            }
-            else{
-                alert(response.data);
+                console.log(response.data);
+                this.props.handleSignIn(response.data.name, response.data.id);
             }
         }).catch( (error) => {
             console.log(error);
@@ -46,7 +46,7 @@ class LogIn extends React.Component{
         }
         return(
             <div>       
-                <h1 style={{textAlign:"center", marginTop: "10px"}} class = "h1"> Log In </h1>
+                <h1 style={{textAlign:"center", marginTop: "10px"}} className = "h1"> Log In </h1>
                 <div id = "log-in-container">
                     <form id="log-in-form" onSubmit = {this.handleSubmit}>
                         <div className= "form-group">

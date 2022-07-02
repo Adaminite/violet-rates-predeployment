@@ -12,7 +12,9 @@ const locationSchema = new Schema({
         unique: true
     },
     reviews:{
-        type: [Schema.Types.ObjectId]
+        type: [Schema.Types.ObjectId],
+        default: [],
+        required: true
     }
 });
 

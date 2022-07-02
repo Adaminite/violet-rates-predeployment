@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const config = require('dotenv').config();
 const LocationsRouter = require('./routes/locations');
 const UsersRouter = require('./routes/users');
+const ReviewsRouter = require('./routes/reviews');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/locations', LocationsRouter);
 app.use('/api/users', UsersRouter);
+app.use('/api/reviews', ReviewsRouter);
 
 
 app.listen(port, () => {

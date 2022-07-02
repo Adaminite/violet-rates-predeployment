@@ -29,19 +29,43 @@ class App extends React.Component{
 
     componentDidMount(){
         axios.get("http://localhost:5000/api/locations").then( (response) => {
+            console.log(response.data);
+            let locations = []
+            response.data.map( (value) => {
 
-            let locations = response.data.map( (value) => {
-                return {
+                let reviews = [];
+                axios.get("http://localhost:5000/api/reviews/get", {params: {
+                    locationId: (value._id).toString()
+                }}).then( (response2) => {
+
+                    if(response2.data != null){
+                        response2.data.map( (review) => {
+                            reviews.push(
+                                {
+                                    user: review.user,
+                                    rating: review.rating, 
+                                    date: review.date,
+                                    content: review.content,
+                                    username: review.username
+                                }
+                            );
+                        });
+                    }
+                }).catch( (error) => {
+                    console.log(error);
+                });
+                locations.push({
                     address: value.address,
                     name: value.name,
                     id: (value._id).toString(),
-                    reviews: value.reviews
-                };
+                    reviews: reviews
+                });
             });
 
             this.setState({
                 locations: locations
             });
+
             }).catch( (error) => {
                 console.log(error);
             });
@@ -53,14 +77,44 @@ class App extends React.Component{
         });
     }
 
-    handleAddReview(text, locationId){
+    handleAddReview(text, locationId, rating){
+        axios.put("http://localhost:5000/api/reviews/add", {
+            userId: this.state.User,
+            username: this.state.username,
+            content: text,
+            rating: rating, 
+            date: Date.now(),
+            locationId: locationId
+        }).then( (response) => {
+            console.log(response.data);
 
+            let newLocations = this.state.locations.map( (location) => {
+                if(location.id === locationId){
+                    location.reviews.unshift({
+                        user: response.data.user,
+                        rating: response.data.rating, 
+                        date: response.data.date,
+                        content: response.data.content,
+                        username: this.state.username
+                    });
+                }
+
+                return location;
+            });
+            this.setState({
+                locations: newLocations
+            });
+
+        }).catch( (error) => {
+            console.log(error);
+        })
     }
 
-    handleSignIn(username){
+    handleSignIn(username, id){
         this.setState({
             isSignedIn: true,
-            username: username
+            username: username,
+            User: id
         });
     }
     
@@ -68,13 +122,18 @@ class App extends React.Component{
     handleLogOut(){
         this.setState({
             isSignedIn: false,
-            username: ""
+            username: "",
+            User: null
         });
     }
 
     render(){
         return(
             <div className = "app">
+                <div>
+                    {this.state.username}, {this.state.User}
+                </div>
+
                 <Router>
                     <Navbar handleLogOut={this.handleLogOut} isSignedIn = {this.state.isSignedIn} currentUser = {this.state.username}/>
                     <Routes>

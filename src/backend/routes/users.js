@@ -1,5 +1,4 @@
 const express = require('express');
-const { useState } = require('react');
 const router = express.Router();
 
 const Users = require('../models/User.model');
@@ -37,7 +36,7 @@ router.post('/add', (req, res) => {
                                 res.send("Unable to register. Please try again later");
                             }
                             else{
-                                res.send("Success");
+                                res.send({id: data._id, name: username})  
                             }
                         })
                     }
@@ -57,7 +56,7 @@ router.get('/verify',(req, res) => {
             res.send("Unable to sign in at this time. Please try again later");
         }
         else if(data != null){
-            res.send("Success")
+            res.send({id: data._id, name: username})
         }
         else{
             res.send("Either username or password is incorrect");

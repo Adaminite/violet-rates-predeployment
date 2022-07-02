@@ -31,7 +31,8 @@ router.post('/add', (req, res) => {
         else{
             Locations.create({
                 name: req.body.name,
-                address: req.body.address
+                address: req.body.address,
+                reviews: []
             }, (error, data) => {
                 if(error){
                     res.send(error);

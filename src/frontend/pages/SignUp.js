@@ -29,16 +29,16 @@ class SignUp extends React.Component{
                 email: email
             }
         ).then( (response) => {
-            if(response.data === "Success"){
+
+            if(typeof response.data === 'string' || response.data instanceof String){
+                console.log(response);
+                alert(response.data);
+            }
+            else{
                 this.setState({
                     toHome: true
                 });
-
-                this.props.handleSignIn(username);
-            }
-            else{
-                console.log(response);
-                alert(response.data);
+                this.props.handleSignIn(response.data.name, response.data._id);
             }
         }).catch( (error) => {
             console.log(error);
