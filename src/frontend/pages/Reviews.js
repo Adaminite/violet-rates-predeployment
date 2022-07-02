@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 const axios = require('axios');
 
-import AddLocation from "../components/AddLocation.js";
+
+import randomImage from '../images/images';
 
 class Reviews extends React.Component{
     constructor(props){
@@ -18,9 +19,10 @@ class Reviews extends React.Component{
                     <div className = "row"> 
                         {
                            this.props.locations.map( (location) => {
+
                             return (<div className = 'col-sm-3'>
                                 <div className='card'>
-                            <img className="card-img-top" src="https://random.imagecdn.app/1280/720" alt="Card image"/>
+                                <img className="card-img-top" src={randomImage()} alt="Card image"/>
                                     <div className='card-body' >
                                         <h5 className="card-title"> {location.name} </h5>
                                         <p className='card-text'> {location.address} </p>
