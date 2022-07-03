@@ -29,12 +29,12 @@ class App extends React.Component{
     }
 
     componentDidMount(){
-        axios.get("http://localhost:5000/api/locations").then( (response) => {
+        axios.get("https://violet-rates.herokuapp.com/api/locations").then( (response) => {
             let locations = []
             response.data.map( (value) => {
 
                 let reviews = [];
-                axios.get("http://localhost:5000/api/reviews/get", {params: {
+                axios.get("https://violet-rates.herokuapp.com/api/reviews/get", {params: {
                     locationId: (value._id).toString()
                 }}).then( (response2) => {
 
@@ -78,7 +78,7 @@ class App extends React.Component{
     }
 
     handleAddReview(text, locationId, rating){
-        axios.put("http://localhost:5000/api/reviews/add", {
+        axios.put("https://violet-rates.herokuapp.com/api/reviews/add", {
             userId: this.state.User,
             username: this.state.username,
             content: text,

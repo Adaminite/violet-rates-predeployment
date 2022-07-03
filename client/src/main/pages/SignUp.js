@@ -23,7 +23,7 @@ class SignUp extends React.Component{
         const password = data[2].value;
 
         
-        axios.post('http://localhost:5000/api/users/add', {
+        axios.post('https://violet-rates.herokuapp.com/api/users/add', {
                 username: username,
                 password: password,
                 email: email

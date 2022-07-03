@@ -21,7 +21,7 @@ class LogIn extends React.Component{
         const username = data[0].value.toLowerCase();
         const password = data[1].value;
 
-        axios.get('http://localhost:5000/api/users/verify', {params: {
+        axios.get('https://violet-rates.herokuapp.com/api/users/verify', {params: {
             username: username, password: password
         }}).then( (response) => {
             if(typeof response.data === 'string' || response.data instanceof String){

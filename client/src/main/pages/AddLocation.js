@@ -29,7 +29,7 @@ class AddLocation extends React.Component{
 
         let location = data[3].value + ", " + data[4].value + " " + data[5].value; 
         
-        axios.post('http://localhost:5000/api/locations/add', {
+        axios.post('https://violet-rates.herokuapp.com/api/locations/add', {
             name:  name.toLowerCase(),
             address: (address + "\n" + location).toLowerCase()
         }).then( (response) => {
